@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package exchangerateservice;
+
+option go_package = "github.com/KVSH-user/ExchangeRateService/pkg/pb/exchangerateservice";
+
+message HealthCheckRequest {
+}
+
+message HealthCheckResponse {
+  string status = 1;
+}

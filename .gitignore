@@ -34,3 +34,5 @@ go.work.sum
 /.idea/.gitignore
 /.idea/modules.xml
 /.idea/vcs.xml
+/.idea/protoeditor.xml
+/data/

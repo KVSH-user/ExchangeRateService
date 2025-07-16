@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package exchangerateservice;
+
+import "exchangerateservice/rpc_get_rates.proto";
+import "exchangerateservice/rpc_healthcheck.proto";
+
+option go_package = "github.com/KVSH-user/ExchangeRateService/pkg/pb/exchangerateservice";
+
+service ExchangeRateService {
+  rpc GetRates (GetRatesRequest) returns (GetRatesResponse);
+  rpc HealthCheck (HealthCheckRequest) returns (HealthCheckResponse);
+}

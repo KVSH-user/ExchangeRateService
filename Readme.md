@@ -1,3 +1,4 @@
+(тестовое задание)
 # ExchangeRateService
 
 GRPC сервис для получения курса валют с биржи Garantex с сохранением в PostgreSQL базу данных.

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package exchangerateservice;
+
+option go_package = "github.com/KVSH-user/ExchangeRateService/pkg/pb/exchangerateservice";
+
+import "google/type/decimal.proto";
+
+message GetRatesRequest {
+  string market = 1;
+}
+
+message GetRatesResponse {
+  int64 ts = 1;
+  google.type.Decimal ask_price = 2;
+  google.type.Decimal bid_price = 3;
+}

@@ -1,0 +1,75 @@
+version: "2"
+run:
+  concurrency: 8
+  issues-exit-code: 1
+  tests: true
+linters:
+  default: none
+  enable:
+    - errcheck
+    - goconst
+    - gosec
+    - govet
+    - ineffassign
+    - staticcheck
+  settings:
+    goconst:
+      min-len: 2
+      min-occurrences: 3
+    gocritic:
+      disabled-checks:
+        - exitAfterDefer
+  exclusions:
+    generated: lax
+    rules:
+      - path: (.+)\.go$
+        text: G104
+      - path: (.+)\.go$
+        text: exported func .* returns unexported type .*, which can be annoying to use
+      - path: (.+)\.go$
+        text: should have a package comment, unless it's in another file for this package
+      - path: (.+)\.go$
+        text: don't use an underscore in package name
+      - path: (.+)\.go$
+        text: Error return value of .((os\.)?std(out|err)\..*|.*Close|.*Flush|os\.Remove(All)?|.*print(f|ln)?|os\.(Un)?Setenv). is not checked
+      - path: (.+)\.go$
+        text: should check returned error before deferring
+    paths:
+      - (.+)_test.go
+      - \.pb\.go$
+      - \.pb\.gw\.go$
+      - \.pb\.app\.go$
+      - \.pb\.goclay\.go$
+      - pkg/colfer
+      - pkg/binwriter
+      - pkg/common
+      - bin
+      - vendor
+      - var
+      - tmp
+      - tests
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - (.+)_test.go
+      - \.pb\.go$
+      - \.pb\.gw\.go$
+      - \.pb\.app\.go$
+      - \.pb\.goclay\.go$
+      - pkg/colfer
+      - pkg/binwriter
+      - pkg/common
+      - bin
+      - vendor
+      - var
+      - tmp
+      - tests
+      - third_party$
+      - builtin$
+      - examples$

@@ -1,11 +1,14 @@
 run: protoc
-	go run cmd/catalogmapperstage/main.go
+	go run cmd/exchangerateservice/main.go
 
 build: protoc
-	cd cmd/catalogmapperstage && go build -o ../../catalogmapper
+	cd cmd/exchangerateservice && go build -o ../../exchangerateservice
 
 lint: protoc
 	golangci-lint run
+
+docker-build:
+	docker build -t exchangerateservice:latest .
 
 createNewMigration:
 	goose -dir migrations/postgresql create first_migration sql

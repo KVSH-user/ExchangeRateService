@@ -1,0 +1,21 @@
+env: "local"
+
+postgres:
+  host: "postgresql"
+  master_port: 5432
+  login: "user"
+  password: "admin"
+  db: "exchangerate"
+  max_conns: 50
+  min_conns: 1
+  max_conn_lifetime: 1h
+  max_conn_idle_time: 30m
+  healthcheck_period: 1m
+  connect_timeout: 5s
+
+grpc:
+  port: ":9049"
+
+garantex_client:
+  base_url: "https://grinex.io"
+  timeout: 30s

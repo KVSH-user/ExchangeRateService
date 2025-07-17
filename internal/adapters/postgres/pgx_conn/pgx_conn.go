@@ -160,7 +160,7 @@ func (c *Client) QueryRow(ctx context.Context, sql string, args ...any) pgx.Row 
 // ExecTx executes a function within a transaction, applying optional transaction parameters.
 func (c *Client) ExecTx(ctx context.Context, f func(ctx context.Context, tx DB) error, txParams ...TxParams) error {
 	const fName = "ExecTx"
-	log := c.logger.With(fName)
+	log := c.logger.With("fn", fName)
 
 	// Initialize transaction options.
 	txOpts := pgx.TxOptions{}

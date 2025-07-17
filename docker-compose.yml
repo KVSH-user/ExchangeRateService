@@ -17,6 +17,8 @@ services:
     environment:
       CONFIG_PATH: config/docker.yml
     restart: unless-stopped
+    depends_on:
+      - postgresql
 
   postgresql:
     image: docker.io/postgres:16.3

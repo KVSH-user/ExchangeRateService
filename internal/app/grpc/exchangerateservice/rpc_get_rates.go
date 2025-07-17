@@ -2,6 +2,8 @@ package exchangerateservice
 
 import (
 	"context"
+	"errors"
+	"github.com/KVSH-user/ExchangeRateService/internal/adapters/garantex"
 
 	"google.golang.org/genproto/googleapis/type/decimal"
 	"google.golang.org/grpc/codes"
@@ -17,6 +19,10 @@ func (s *ExchangeRateService) GetRates(ctx context.Context, req *pb.GetRatesRequ
 
 	rate, err := s.exchangeRateModule.GetExchangeRate(ctx, req.GetMarket())
 	if err != nil {
+		if errors.As(err, &garantex.ErrInvalidMarketID) {
+			return nil, status.Error(codes.InvalidArgument, "Invalid marketID")
+		}
+
 		return nil, status.Errorf(codes.Internal, "failed to fetch rates: %v", err)
 	}
 
